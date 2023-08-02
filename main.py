@@ -1,46 +1,42 @@
+import custom_moduls.admin.admin_FSM_line
+import custom_moduls.user.User_line
+from custom_moduls.database.sqliteclass import Database
 from aiogram import executor
-from Module import dp
+from Module import *
+from custom_moduls.admin.admin_FSM_line import Admin_FSM
+from custom_moduls.user.User_line import User_FSM
 import KB
-import cfg
-import Admin_FSM_line
-from Admin_FSM_line import *
+custom_moduls.user.User_line.user_hendlers()
+custom_moduls.admin.admin_FSM_line.admin_hendlers()
 
-Admin_FSM_line.admin_hendlers()
-
-conn = sqlite3.connect('example.db')
-cursor = conn.cursor()
+a = Database("Dolg_bot_bd")
 
 async def on_startup(_):
 	print("Ты меня запустил!")
 
-
-
-
-
 @dp.message_handler(commands=['start'])
 async def cmd_start(message: types.Message) -> None:
-	await message.answer(cfg.role, reply_markup=KB.Menu)
+	await message.answer("Здравствуй, Студент!", reply_markup= KB.Menu)
 
+@dp.callback_query_handler(text= 'stud')
+async def auntification(callback: types.CallbackQuery):
+	result = a.join_select_info_users(callback.from_user.id)
+	if result:
+		await callback.message.answer("Приветствую вас вновь!", reply_markup= KB.stud_button)
+		await User_FSM.main_buttons.set()
+	else:
+		await callback.message.edit_text("Вы не регистрировались? Исправьте эту ошибку!")
+		await callback.message.answer("Укажите свое ФИО.")
+		await User_FSM.registration.set()
 
-@dp.callback_query_handler(text='admin')
-async def check_admin_bd(callback: types.CallbackQuery):
-	cursor.execute(f"""SELECT id FROM admin WHERE id = {callback.from_user.id} """)
-	if cursor.fetchone():
-		await callback.message.edit_text(cfg.admin_hello, reply_markup= KB.Option)
+@dp.message_handler(commands=['admin'], state= '*')
+async def check_admin_bd(message: types.Message):
+	result = a.join_select_info_admin(message.from_user.id)
+	if result:
+		await message.answer("приветствую вас!\nВыберите шаг!", reply_markup=KB.Option)
 		await Admin_FSM.catching_text.set()
 	else:
-		await callback.message.answer(cfg.not_admin_hello)
-
-
-@dp.callback_query_handler(text='stud')
-async def check_stud_bd(callback: types.CallbackQuery):
-	cursor.execute(f"""SELECT id FROM stud WHERE id = {callback.from_user.id}""")
-	if cursor.fetchone():
-		await callback.message.answer(cfg.stud_hello)
-	else:
-		await callback.message.answer(cfg.call_to_reg)
-
-
+		await message.answer("Прошу зарегестрироваться как студент!", reply_markup= KB.Menu)
 
 if __name__ == "__main__":
 	executor.start_polling(dp, on_startup=on_startup, skip_updates=True)

@@ -1,117 +1,93 @@
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
-import FromJsonToDB
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 
 Menu = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
         inline_keyboard=[
-                [
-                InlineKeyboardButton(
-                    text= "Администратор",
-                    callback_data= 'admin'
-                        )
-                ],
-                [
-                InlineKeyboardButton(
-                    text= "Студент",
-                    callback_data= 'stud'
-                        )
-                ]
+                [InlineKeyboardButton(text="Авторизоваться",callback_data='stud')]
+        ]
+)
+Option = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
+        inline_keyboard=[
+                [InlineKeyboardButton(text="Авторизоваться",callback_data='verification')],
+                [InlineKeyboardButton(text="Назад",callback_data='back')]
+        ]
+)
+Сourse = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
+        inline_keyboard=[
+                [InlineKeyboardButton(text="Редактировать курсы",callback_data= 'open')],
+                [InlineKeyboardButton(text="Открыть/Зактрыть курсы",callback_data= 'closed')]
+        ]
+)
+on_off = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
+        inline_keyboard=[
+                [InlineKeyboardButton(text="Открытые курсы",callback_data= 'open_butt')],
+                [InlineKeyboardButton(text="Закрытые курсы",callback_data= 'closed')]
         ]
 )
 Menu_return = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
         inline_keyboard=[
-                [
-                InlineKeyboardButton(
-                    text= "Авторизоваться как студент",
-                    callback_data= 'stud'
-                        )
-                ]
+                [InlineKeyboardButton(text="Авторизоваться как студент",callback_data= 'stud')]
         ]
 )
-
-Option = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
+yes_no = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
         inline_keyboard=[
-                [
-                InlineKeyboardButton(
-                    text= "Авторизоваться",
-                    callback_data= 'verification'
-                        )
-                ],
-                [
-                InlineKeyboardButton(
-                    text= "Назад",
-                    callback_data= 'back'
-                        )
-                ]
+                [InlineKeyboardButton(text="✅Включить✅",callback_data= 'ans_yes')],
+                [InlineKeyboardButton(text="❌Выключить❌",callback_data= 'ans_no')]
         ]
 )
+#Кнопки для линии студентов
+stud_button = ReplyKeyboardMarkup(row_width=3, resize_keyboard=True, keyboard=[
+                [KeyboardButton(text= "FAQ")],
+                [KeyboardButton(text= "Открытые курсы")],
+                [KeyboardButton(text= "Мои курсы")],
+                [KeyboardButton(text= "Личные данные")]
 
-Сourse = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
+        ]
+)
+faq_button = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
         inline_keyboard=[
-                [
-                InlineKeyboardButton(
-                    text= "Редактировать курсы",
-                    callback_data= 'open'
-                        )
-                ],
-                [
-                InlineKeyboardButton(
-                    text= "Открыть/Зактрыть курсы",
-                    callback_data= 'closed'
-                        )
-                ]
+                [InlineKeyboardButton(text="О Боте",callback_data= 'about')],
+                [InlineKeyboardButton(text="Политика обработки ПДн",callback_data= 'politic')]
         ]
 )
-
-on_off = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
+back_button = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
         inline_keyboard=[
-                [
-                InlineKeyboardButton(
-                    text= "Открытые курсы",
-                    callback_data= 'open'
-                        )
-                ],
-                [
-                InlineKeyboardButton(
-                    text= "Закрытые курсы",
-                    callback_data= 'closed'
-                        )
-                ]
+                [InlineKeyboardButton(text="Назад",callback_data= 'back_faq')]
         ]
 )
+about_user_buttons = ReplyKeyboardMarkup(row_width=3, resize_keyboard=True, keyboard=[
+                [KeyboardButton(text= "ФИО")],
+                [KeyboardButton(text= "Группа")],
+                [KeyboardButton(text= "Номер телефона")],
+                [KeyboardButton(text= "Дата рождения")],
+                [KeyboardButton(text= "Номер паспорта")],
+                [KeyboardButton(text= "Серия паспорта")],
+                [KeyboardButton(text= "Дата выдачи")],
+                [KeyboardButton(text= "Кем выдан")],
+                [KeyboardButton(text= "Код подразделения")],
+                [KeyboardButton(text= "Место регистрации")],
+                [KeyboardButton(text= "Назад")]
 
-ask_me_off = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
+        ]
+)
+cours_info = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
         inline_keyboard=[
-                [
-                InlineKeyboardButton(
-                    text= "Да",
-                    callback_data= 'yes'
-                        )
-                ],
-                [
-                InlineKeyboardButton(
-                    text= "Вернуться",
-                    callback_data= 'back'
-                        )
-                ]
+                [InlineKeyboardButton(text="👨🏻‍🎓‍ЗАПИСАТЬСЯ👩🏼‍🎓",callback_data= 'load')],
+                [InlineKeyboardButton(text="стоимость",callback_data= 'cost')],
+                [InlineKeyboardButton(text="рассписание",callback_data= 'schedule')],
+                [InlineKeyboardButton(text="аудитория",callback_data= 'room')],
+                [InlineKeyboardButton(text="преподаватель",callback_data= 'teacher')],
+                [InlineKeyboardButton(text="комментарий",callback_data= 'comment')],
+                [InlineKeyboardButton(text="Назад",callback_data= 'back_list')]
         ]
 )
-
-ask_me_on = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
+return_info = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
         inline_keyboard=[
-                [
-                InlineKeyboardButton(
-                    text= "Да",
-                    callback_data= 'yes'
-                        )
-                ],
-                [
-                InlineKeyboardButton(
-                    text= "Вернуться",
-                    callback_data= 'back'
-                        )
-                ]
+                [InlineKeyboardButton(text="Назад",callback_data= 'return_info')]
         ]
 )
-
-Open_course = InlineKeyboardMarkup(row_width=1, resize_keyboard=True, inline_keyboard= FromJsonToDB.on)
-Closed_course = InlineKeyboardMarkup(row_width=1, resize_keyboard=True, inline_keyboard= FromJsonToDB.off)
+answer = InlineKeyboardMarkup(row_width=2, resize_keyboard=True,
+        inline_keyboard=[
+                [InlineKeyboardButton(text="да",callback_data= 'yes')],
+                [InlineKeyboardButton(text="нет",callback_data= 'no')]
+        ]
+)

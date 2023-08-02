@@ -2,11 +2,11 @@
     "1": {
         "title": "Архитектура ЭВМ",
         "status": true,
-        "cost": "4000",
-        "schedule": "12.08.4000",
-        "room": "1203",
-        "teacher": "Зубряк Василий Константинович",
-        "comment": "Всем 5"
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
     },
     "2": {
         "title": "Архитектура информационных систем",
@@ -74,11 +74,11 @@
     "9": {
         "title": "Интеллектуальные информационные системы",
         "status": true,
-        "cost": "2300",
-        "schedule": "31.06.2023",
-        "room": "1512",
-        "teacher": "Тарасов Валентин Сергеевич",
-        "comment": "Быть всем без опозданий"
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
     },
     "10": {
         "title": "Информационная безопасность и защита информации",
@@ -137,11 +137,11 @@
     "16": {
         "title": "Моделирование бизнес-процессов",
         "status": false,
-        "cost": "60000 рублей",
-        "schedule": "15.06.2023",
-        "room": "1428",
-        "teacher": "Голодная Наталья Юрьевна",
-        "comment": "Зашибись, ты получишь пересдачу СНОВА"
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
     },
     "17": {
         "title": "Моделирование систем",
@@ -218,11 +218,11 @@
     "25": {
         "title": "Программирование на С",
         "status": true,
-        "cost": "2500",
-        "schedule": "14.03.2078",
-        "room": "1488",
-        "teacher": "БКВ",
-        "comment": "ты не сдашь"
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
     },
     "26": {
         "title": "Проектирование информационных систем",
@@ -329,7 +329,7 @@
         "cost": null,
         "schedule": null,
         "room": null,
-        "teacher": "ТВОЯ ЖИРНАЯ МАМАША",
+        "teacher": null,
         "comment": null
     },
     "38": {
