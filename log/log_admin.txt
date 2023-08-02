@@ -1,0 +1,6 @@
+sss
+11
+ОШИБКА:  отношение "admin" не существует
+LINE 1: SELECT password FROM admin WHERE id = 683832146
+                             ^
+
