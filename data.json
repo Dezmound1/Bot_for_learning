@@ -1,0 +1,371 @@
+{
+    "1": {
+        "title": "Архитектура ЭВМ",
+        "status": true,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "2": {
+        "title": "Архитектура информационных систем",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "3": {
+        "title": "Базы данных",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "4": {
+        "title": "Базы данных продвинутый курс",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "5": {
+        "title": "Введение в анализ больших данных",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "6": {
+        "title": "Веб-программирование",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "7": {
+        "title": "Геоинформационные системы",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "8": {
+        "title": "ИТ-инфраструктура и прикладные системы предприятий",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "9": {
+        "title": "Интеллектуальные информационные системы",
+        "status": true,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "10": {
+        "title": "Информационная безопасность и защита информации",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "11": {
+        "title": "Исследование операций",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "12": {
+        "title": "Компоненты системы оптической связи",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "13": {
+        "title": "Математическая логика и теория алгоритмов",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "14": {
+        "title": "Математический анализ модуль 1",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "15": {
+        "title": "Математический анализ модуль 2",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "16": {
+        "title": "Моделирование бизнес-процессов",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "17": {
+        "title": "Моделирование систем",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "18": {
+        "title": "Объектно-ориентированное программирование",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "19": {
+        "title": "Операционные системы",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "20": {
+        "title": "Правовые основы информатики",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "21": {
+        "title": "Предметно-ориентированное программирование",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "22": {
+        "title": "Прикладная физическая культура и спорт",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "23": {
+        "title": "Программирование для мобильных устройств",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "24": {
+        "title": "Программирование на Java",
+        "status": true,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "25": {
+        "title": "Программирование на С",
+        "status": true,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "26": {
+        "title": "Проектирование информационных систем",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "27": {
+        "title": "Проектная деятельность",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "28": {
+        "title": "Профессиональный практикум",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "29": {
+        "title": "Сети ЭВМ и телекоммуникации",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "30": {
+        "title": "Теория информационных процессов и систем",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "31": {
+        "title": "Теория сигналов",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "32": {
+        "title": "Теория систем и системный анализ",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "33": {
+        "title": "Технико-экономическое обоснование ИКТ проектов",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "34": {
+        "title": "Технологии волоконной и интегральной оптики",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "35": {
+        "title": "Технология облачных вычислений",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "36": {
+        "title": "Технология программирования",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "37": {
+        "title": "Управление ИТ-службой предприятия",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "38": {
+        "title": "Управление проектами",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "39": {
+        "title": "Уч практика по получению первичных проф умений и навыков",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "40": {
+        "title": "Учебная практика по развитию социально-проф",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    },
+    "41": {
+        "title": "Хранилища данных",
+        "status": false,
+        "cost": null,
+        "schedule": null,
+        "room": null,
+        "teacher": null,
+        "comment": null
+    }
+}
