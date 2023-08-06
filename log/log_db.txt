@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 column "yes" does not exist
 LINE 5:      where id = yes
                         ^
@@ -9,4 +10,229 @@ LINE 6:      where s.id in ()
 syntax error at or near ")"
 LINE 6:      where s.id in ()
                             ^
+=======
+near ".2024": syntax error
+near ".2024": syntax error
+near ".2028": syntax error
+near "Äàíèèë": syntax error
+near ".2028": syntax error
+ÎØÈÁÊÀ:  ñòîëáåö a.user_id íå ñóùåñòâóåò
+LINE 1: ....telegram_id from admins a join users u on u.id = a.user_id ...
+                                                             ^
+
+ÎØÈÁÊÀ:  ñòîëáåö a.user_id íå ñóùåñòâóåò
+LINE 1: ....telegram_id from admins a join users u on u.id = a.user_id ...
+                                                             ^
+
+ÎØÈÁÊÀ:  ñòîëáåö a.user_id íå ñóùåñòâóåò
+LINE 1: ....telegram_id from admins a join users u on u.id = a.user_id ...
+                                                             ^
+
+ÎØÈÁÊÀ:  ñòîëáåö a.user_id íå ñóùåñòâóåò
+LINE 1: ....telegram_id from admins a join users u on u.id = a.user_id ...
+                                                             ^
+
+ÎØÈÁÊÀ:  ñòîëáåö a.user_id íå ñóùåñòâóåò
+LINE 1: ....telegram_id from admins a join users u on u.id = a.user_id ...
+                                                             ^
+
+ÎØÈÁÊÀ:  îïåğàòîğ íå ñóùåñòâóåò: bigint = integer[]
+LINE 6:      where s.id in (ARRAY[12,21])
+                        ^
+HINT:  Îïåğàòîğ ñ äàííûìè èìåíåì è òèïàìè àğãóìåíòîâ íå íàéäåí. Âîçìîæíî, âàì ñëåäóåò äîáàâèòü ÿâíûå ïğèâåäåíèÿ òèïîâ.
+
+ÎØÈÁÊÀ:  îïåğàòîğ íå ñóùåñòâóåò: bigint = integer[]
+LINE 6:      where s.id in (ARRAY[12,21])
+                        ^
+HINT:  Îïåğàòîğ ñ äàííûìè èìåíåì è òèïàìè àğãóìåíòîâ íå íàéäåí. Âîçìîæíî, âàì ñëåäóåò äîáàâèòü ÿâíûå ïğèâåäåíèÿ òèïîâ.
+
+ÎØÈÁÊÀ:  îøèáêà ñèíòàêñèñà (ïğèìåğíîå ïîëîæåíèå: "subject")
+LINE 7:        form subject s 
+                    ^
+
+ÎØÈÁÊÀ:  îøèáêà ñèíòàêñèñà (ïğèìåğíîå ïîëîæåíèå: "subject")
+LINE 7:        form subject s 
+                    ^
+
+ÎØÈÁÊÀ:  îøèáêà ñèíòàêñèñà (ïğèìåğíîå ïîëîæåíèå: "subject")
+LINE 7:        form subject s 
+                    ^
+
+ÎØÈÁÊÀ:  îøèáêà ñèíòàêñèñà (ïğèìåğíîå ïîëîæåíèå: "subject")
+LINE 7:        form subject s 
+                    ^
+
+ÎØÈÁÊÀ:  íåâåğíûé ñèíòàêñèñ äëÿ òèïà integer: "Äàíèèë Ôğîëîâ Àëåêñàíäğîâè÷"
+LINE 1: INSERT INTO users VALUES (1805646786,'Äàíèèë Ôğîëîâ Àëåêñàíä...
+                                             ^
+
+ÎØÈÁÊÀ:  íåâåğíûé ñèíòàêñèñ äëÿ òèïà bigint: "2016.11.01"
+LINE 1: INSERT INTO passport VALUES ('2016.11.01','ìíîé','345-321','...
+                                     ^
+
+'NoneType' object is not iterable
+'NoneType' object is not subscriptable
+ÎØÈÁÊÀ:  îïåğàòîğ íå ñóùåñòâóåò: bigint = date
+LINE 5:      where id = schedule
+                      ^
+HINT:  Îïåğàòîğ ñ äàííûìè èìåíåì è òèïàìè àğãóìåíòîâ íå íàéäåí. Âîçìîæíî, âàì ñëåäóåò äîáàâèòü ÿâíûå ïğèâåäåíèÿ òèïîâ.
+
+'NoneType' object is not subscriptable
+'NoneType' object is not subscriptable
+ÎØÈÁÊÀ:  îïåğàòîğ íå ñóùåñòâóåò: bigint = text
+LINE 5:      where id = comment
+                      ^
+HINT:  Îïåğàòîğ ñ äàííûìè èìåíåì è òèïàìè àğãóìåíòîâ íå íàéäåí. Âîçìîæíî, âàì ñëåäóåò äîáàâèòü ÿâíûå ïğèâåäåíèÿ òèïîâ.
+
+ÎØÈÁÊÀ:  îïåğàòîğ íå ñóùåñòâóåò: bigint = text
+LINE 5:      where id = teacher
+                      ^
+HINT:  Îïåğàòîğ ñ äàííûìè èìåíåì è òèïàìè àğãóìåíòîâ íå íàéäåí. Âîçìîæíî, âàì ñëåäóåò äîáàâèòü ÿâíûå ïğèâåäåíèÿ òèïîâ.
+
+'NoneType' object is not subscriptable
+'NoneType' object is not subscriptable
+'NoneType' object is not subscriptable
+'NoneType' object is not subscriptable
+ÎØÈÁÊÀ:  îïåğàòîğ íå ñóùåñòâóåò: bigint = date
+LINE 5:      where id = schedule
+                      ^
+HINT:  Îïåğàòîğ ñ äàííûìè èìåíåì è òèïàìè àğãóìåíòîâ íå íàéäåí. Âîçìîæíî, âàì ñëåäóåò äîáàâèòü ÿâíûå ïğèâåäåíèÿ òèïîâ.
+
+'NoneType' object is not subscriptable
+ÎØÈÁÊÀ:  îïåğàòîğ íå ñóùåñòâóåò: bigint = text
+LINE 5:      where id = comment
+                      ^
+HINT:  Îïåğàòîğ ñ äàííûìè èìåíåì è òèïàìè àğãóìåíòîâ íå íàéäåí. Âîçìîæíî, âàì ñëåäóåò äîáàâèòü ÿâíûå ïğèâåäåíèÿ òèïîâ.
+
+ÎØÈÁÊÀ:  ñòîëáåö "yes" íå ñóùåñòâóåò
+LINE 5:      where id = yes
+                        ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "yes" íå ñóùåñòâóåò
+LINE 5:      where id = yes
+                        ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "yes" íå ñóùåñòâóåò
+LINE 5:      where id = yes
+                        ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "yes" íå ñóùåñòâóåò
+LINE 5:      where id = yes
+                        ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "yes" íå ñóùåñòâóåò
+LINE 5:      where id = yes
+                        ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "back_list" íå ñóùåñòâóåò
+LINE 5:      where id = back_list
+                        ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "yes" íå ñóùåñòâóåò
+LINE 5:      where id = yes
+                        ^
+
+'NoneType' object is not subscriptable
+ÎØÈÁÊÀ:  îïåğàòîğ íå ñóùåñòâóåò: bigint = date
+LINE 5:      where id = schedule
+                      ^
+HINT:  Îïåğàòîğ ñ äàííûìè èìåíåì è òèïàìè àğãóìåíòîâ íå íàéäåí. Âîçìîæíî, âàì ñëåäóåò äîáàâèòü ÿâíûå ïğèâåäåíèÿ òèïîâ.
+
+ÎØÈÁÊÀ:  îïåğàòîğ íå ñóùåñòâóåò: bigint = text
+LINE 5:      where id = comment
+                      ^
+HINT:  Îïåğàòîğ ñ äàííûìè èìåíåì è òèïàìè àğãóìåíòîâ íå íàéäåí. Âîçìîæíî, âàì ñëåäóåò äîáàâèòü ÿâíûå ïğèâåäåíèÿ òèïîâ.
+
+'NoneType' object is not subscriptable
+ÎØÈÁÊÀ:  ñòîëáåö "return_info" íå ñóùåñòâóåò
+LINE 5:      where id = return_info
+                        ^
+
+'NoneType' object is not subscriptable
+ÎØÈÁÊÀ:  ñòîëáåö "return_info" íå ñóùåñòâóåò
+LINE 5:      where id = return_info
+                        ^
+
+ÎØÈÁÊÀ:  îïåğàòîğ íå ñóùåñòâóåò: bigint = text
+LINE 5:      where id = comment
+                      ^
+HINT:  Îïåğàòîğ ñ äàííûìè èìåíåì è òèïàìè àğãóìåíòîâ íå íàéäåí. Âîçìîæíî, âàì ñëåäóåò äîáàâèòü ÿâíûå ïğèâåäåíèÿ òèïîâ.
+
+ÎØÈÁÊÀ:  ñòîëáåö "return_info" íå ñóùåñòâóåò
+LINE 5:      where id = return_info
+                        ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "yes" íå ñóùåñòâóåò
+LINE 5:      where id = yes
+                        ^
+
+'NoneType' object is not subscriptable
+ÎØÈÁÊÀ:  ñòîëáåö "return_info" íå ñóùåñòâóåò
+LINE 5:      where id = return_info
+                        ^
+
+'NoneType' object is not subscriptable
+ÎØÈÁÊÀ:  ñòîëáåö "return_info" íå ñóùåñòâóåò
+LINE 5:      where id = return_info
+                        ^
+
+ÎØÈÁÊÀ:  îïåğàòîğ íå ñóùåñòâóåò: bigint = date
+LINE 5:      where id = schedule
+                      ^
+HINT:  Îïåğàòîğ ñ äàííûìè èìåíåì è òèïàìè àğãóìåíòîâ íå íàéäåí. Âîçìîæíî, âàì ñëåäóåò äîáàâèòü ÿâíûå ïğèâåäåíèÿ òèïîâ.
+
+ÎØÈÁÊÀ:  ñòîëáåö "return_info" íå ñóùåñòâóåò
+LINE 5:      where id = return_info
+                        ^
+
+'NoneType' object is not subscriptable
+ÎØÈÁÊÀ:  ñòîëáåö "return_info" íå ñóùåñòâóåò
+LINE 5:      where id = return_info
+                        ^
+
+ÎØÈÁÊÀ:  îïåğàòîğ íå ñóùåñòâóåò: bigint = text
+LINE 5:      where id = teacher
+                      ^
+HINT:  Îïåğàòîğ ñ äàííûìè èìåíåì è òèïàìè àğãóìåíòîâ íå íàéäåí. Âîçìîæíî, âàì ñëåäóåò äîáàâèòü ÿâíûå ïğèâåäåíèÿ òèïîâ.
+
+ÎØÈÁÊÀ:  ñòîëáåö "return_info" íå ñóùåñòâóåò
+LINE 5:      where id = return_info
+                        ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "telegram_id" íå ñóùåñòâóåò
+LINE 5:       where telegram_id = 1805646786
+                    ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "telegram_id" íå ñóùåñòâóåò
+LINE 5:       where telegram_id = 1805646786
+                    ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "telegram_id" íå ñóùåñòâóåò
+LINE 5:       where telegram_id = 1805646786
+                    ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "telegram_id" íå ñóùåñòâóåò
+LINE 5:       where telegram_id = 1805646786
+                    ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "telegram_id" íå ñóùåñòâóåò
+LINE 5:       where telegram_id = 1805646786
+                    ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "telegram_id" íå ñóùåñòâóåò
+LINE 5:       where telegram_id = 1805646786
+                    ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "telegram_id" íå ñóùåñòâóåò
+LINE 5:       where telegram_id = 1805646786
+                    ^
+
+ÎØÈÁÊÀ:  çíà÷åíèå ïîëÿ òèïà date/time âíå äèàïàçîíà: "31.11.2016"
+LINE 3:                  SET issued_date = '31.11.2016'
+                                           ^
+
+ÎØÈÁÊÀ:  ñòîëáåö "telegram_id" íå ñóùåñòâóåò
+LINE 5:       where telegram_id = 1805646786
+                    ^
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 

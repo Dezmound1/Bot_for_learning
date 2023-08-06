@@ -70,14 +70,22 @@ async def open_cours(message: types.Message, state= User_FSM.main_buttons):
 async def cours_whatch(callback: types.CallbackQuery, state= User_FSM.cours_whatch):
 	async with state.proxy() as data:
 		data["callback_cours"] = callback.data
+<<<<<<< HEAD
 	result = a.info_subject('title', data["callback_cours"])
+=======
+	result = a.info_subject('title', callback.data)
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await callback.message.edit_text(f"Предмет: {result}\nОзнакомтесь с информацией или запишитесь", reply_markup=KB.cours_info)
 	await User_FSM.info_watch.set()
 
 async def back_cours_whatch(callback: types.CallbackQuery, state= User_FSM.info_watch):
 	async with state.proxy() as data:
 		data["back_cours_whatch"] = callback.data
+<<<<<<< HEAD
 	result = a.info_subject('title', data["callback_cours"])
+=======
+	result = a.info_subject('title', callback.data)
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await callback.message.edit_text(f"Предмет: {result}\nОзнакомтесь с информацией или запишитесь", reply_markup=KB.cours_info)
 	await User_FSM.info_watch.set()
 
@@ -95,7 +103,11 @@ async def answer_yes(callback: types.CallbackQuery, state= User_FSM.answer):
 	async with state.proxy() as data:
 		data["answer"] = callback.data
 	a.subject_id_into_array('array_append', data["callback_cours"], callback.from_user.id)
+<<<<<<< HEAD
 	result = a.info_subject('title', data["callback_cours"])
+=======
+	result = a.info_subject('title', callback.data)
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await callback.message.edit_text(f"✅Вы успешно записались на курс✅ {result}\nВернуться назад /menu", reply_markup=a.gen_off_on_subject_but()["on"])
 	await User_FSM.cours_whatch.set()
 
@@ -104,6 +116,7 @@ async def answer_no(callback: types.CallbackQuery, state= User_FSM.answer):
 		data["answer"] = callback.data
 	result = a.info_subject('title', data["callback_cours"])
 	await callback.message.edit_text(f"Предмет: {result}\nОзнакомтесь с информацией или запишитесь", reply_markup=KB.cours_info)
+<<<<<<< HEAD
 	await User_FSM.info_watch.set()
 
 async def cost(callback: types.CallbackQuery, state= User_FSM.info_watch):
@@ -134,6 +147,28 @@ async def comment(callback: types.CallbackQuery, state= User_FSM.info_watch):
 	async with state.proxy() as data:
 		data["type_info"] = callback.data
 	result = a.info_subject('comment', data["callback_cours"])
+=======
+	await User_FSM.cours_whatch.set()
+
+async def cost(callback: types.CallbackQuery, state= User_FSM.info_watch):
+	result = a.info_subject('cost', callback.data)
+	await callback.message.edit_text(f"стоимость курса: {result} рублей", reply_markup= KB.return_info)
+
+async def schedule(callback: types.CallbackQuery, state= User_FSM.info_watch):
+	result = a.info_subject('schedule', callback.data)
+	await callback.message.edit_text(f"курс проведется: {result} ", reply_markup= KB.return_info)
+
+async def room(callback: types.CallbackQuery, state= User_FSM.info_watch):
+	result = a.info_subject('room', callback.data)
+	await callback.message.edit_text(f"курс проведется в аудитории №{result}", reply_markup= KB.return_info)
+
+async def teacher(callback: types.CallbackQuery, state= User_FSM.info_watch):
+	result = a.info_subject('teacher', callback.data)
+	await callback.message.edit_text(f"курс проведет {result}", reply_markup= KB.return_info)
+
+async def comment(callback: types.CallbackQuery, state= User_FSM.info_watch):
+	result = a.info_subject('comment', callback.data)
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await callback.message.edit_text(f"{result}", reply_markup= KB.return_info)
 
 async def back_list(callback: types.CallbackQuery, state= User_FSM.info_watch):
@@ -179,7 +214,11 @@ async def full_name(message: types.Message, state= User_FSM.registration):
 		data["full_name"] = message.text
 	answer = re.fullmatch(r'(\w{2,})+[ ]+(\w{2,})+[ ]+(\w{2,})', message.text)  # ФИО
 	if answer:
+<<<<<<< HEAD
 		await message.answer("Введи название своей группы. Пример: БИС-21-1")
+=======
+		await message.answer("Введи название своей группы")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 		await User_FSM.group.set()
 	else:
 		await message.answer("Введи корректное ФИО")
@@ -189,7 +228,11 @@ async def group(message: types.Message, state= User_FSM.group):
 		data["group"] = message.text
 	answer = re.search(r'(\S)+[-]+(\d{2})', message.text)
 	if answer:
+<<<<<<< HEAD
 		await message.answer("Введи номер телефона. Пример: +79991111111 или 89991111111")
+=======
+		await message.answer("Введи номер телефона")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 		await User_FSM.number.set()
 	else:
 		await message.answer("Введи корректное название!")
@@ -199,40 +242,68 @@ async def number(message: types.Message, state= User_FSM.number):
 		data["number"] = message.text
 	answer = re.fullmatch(r'(([+]+79)|89)+\d{9}', message.text)
 	if answer:
+<<<<<<< HEAD
 		await message.answer("Введи дату рождения. Пример: 31.12.2000 Год не ниже 2000")
 		await User_FSM.date_birth.set()
 	else:
 		await message.answer("Введи номер правильно")
+=======
+		await message.answer("Введи дату рождения")
+		await User_FSM.date_birth.set()
+	else:
+		await message.answer("Введи корректо дату")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 
 async def date_birth(message: types.Message, state= User_FSM.date_birth):
 	async with state.proxy() as data:
 		data["date_bith"] = message.text
 	answer = re.fullmatch(r'(([0-2][1-9])|3+[0-1])+[.]+((0+[1-9])|[10-12])+[.]+(200+[0-8])', message.text)
 	if answer:
+<<<<<<< HEAD
 		await message.answer("Введите серию паспорта. Пример: 123456")
 		await User_FSM.passport_number.set()
 	else:
 		await message.answer("Введите корректно дату рождения. Год не ниже 2000")
+=======
+		await message.answer("Введите номер паспорта")
+		await User_FSM.passport_number.set()
+	else:
+		await message.answer("Введите корректно дату рождения")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 
 async def passport_num(message: types.Message, state= User_FSM.passport_number):
 	async with state.proxy() as data:
 		data["pass_num"] = message.text
 	answer = re.fullmatch(r'\d{6}', message.text)
 	if answer:
+<<<<<<< HEAD
 		await message.answer("введи номер паспорта. Пример: 1234")
 		await User_FSM.passport_serial.set()
 	else:
 		await message.answer("введи серию паспорта правильно")
+=======
+		await message.answer("введи серию паспорта")
+		await User_FSM.passport_serial.set()
+	else:
+		await message.answer("введи номер паспорта правильно")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 
 async def passport_serial(message: types.Message, state= User_FSM.passport_serial):
 	async with state.proxy() as data:
 		data["pass_serial"] = message.text
 	answer = re.fullmatch(r'\d{4}', message.text)
 	if answer:
+<<<<<<< HEAD
 		await message.answer("Укажи, дату выдачи паспорта. Пример: 31.08.2015 Год не ниже 2015")
 		await User_FSM.passport_date.set()
 	else:
 		await message.answer("Неправильно введен номер")
+=======
+		await message.answer("Укажи, дату выдачи паспорта")
+		await User_FSM.passport_date.set()
+	else:
+		await message.answer("Неправильно введена дата")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 
 async def passport_date(message: types.Message, state= User_FSM.passport_date):
 	async with state.proxy() as data:
@@ -242,12 +313,20 @@ async def passport_date(message: types.Message, state= User_FSM.passport_date):
 		await message.answer("Укажи кем выдан паспорт")
 		await User_FSM.issued_by.set()
 	else:
+<<<<<<< HEAD
 		await message.answer("Введи правельную дату. Год не ниже 2015")
+=======
+		await message.answer("Введи правельную дату")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 
 async def issued_by(message: types.Message, state= User_FSM.issued_by):
 	async with state.proxy() as data:
 		data["issued_by"] = message.text
+<<<<<<< HEAD
 	await message.answer("Введи код подразделения. Пример: 123-123")
+=======
+	await message.answer("Введи код подразделения")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await User_FSM.division_code.set()
 
 async def division_code(message: types.Message, state= User_FSM.division_code):
@@ -266,6 +345,7 @@ async def residence(message: types.Message, state= User_FSM.residence):
 	await message.answer("Благодарим за регистрацию!", reply_markup=KB.stud_button)
 	await User_FSM.main_buttons.set()
 	# Форматирование дат под нормы pastgresql
+<<<<<<< HEAD
 	def formated_date(date):
 		day, month, year = date.split(".")
 		formatted_date = f"{year}.{month.zfill(2)}.{day.zfill(2)}"
@@ -273,13 +353,26 @@ async def residence(message: types.Message, state= User_FSM.residence):
 	# Инсерт данных в БД users и passport
 	user_id = a.insert_data_users(message.from_user.id, data["full_name"], data["group"], data["number"], formated_date(data["date_bith"]))
 	a.insert_data_passport(user_id, formated_date(data["pass_date"]), data["issued_by"], data["code"], data["residence"], data["pass_num"], data["pass_serial"])
+=======
+	date_birth_obj= datetime.strptime(data["date_bith"], "%d.%m.%Y")
+	pass_date_obj= datetime.strptime(data["pass_date"], "%d.%m.%Y")
+	formatted_date_birth=  date_birth_obj.strftime("%Y.%m.%d")
+	formatted_pass_date=  pass_date_obj.strftime("%Y.%m.%d")
+	# Инсерт данных в БД users и passport
+	user_id = a.insert_data_users(message.from_user.id, data["full_name"], data["group"], data["number"], formatted_date_birth)
+	a.insert_data_passport(user_id, formatted_pass_date, data["issued_by"], data["code"], data["residence"], data["pass_num"], data["pass_serial"])
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 
 # Обновление данных в личном кабинете
 async def user_name(message: types.Message, state= User_FSM.edit_user_info):
 	async with state.proxy() as data:
 		data["user_name"] = message.text
 	result = a.select_info_users('users', 'full_name', message.from_user.id)
+<<<<<<< HEAD
 	await message.answer(f"Ваше ФИО: {result}\nИзмените")
+=======
+	await message.answer(f"Ваше ФИО: {result}")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await User_FSM.user_message_name.set()
 
 async def user_message_name(message: types.Message, state= User_FSM.user_message_name):
@@ -297,7 +390,11 @@ async def user_group(message: types.Message, state= User_FSM.edit_user_info):
 	async with state.proxy() as data:
 		data["user_group"] = message.text
 	result = a.select_info_users('users', 'group_name', message.from_user.id)
+<<<<<<< HEAD
 	await message.answer(f"Ваша группа: {result}\nИзмените")
+=======
+	await message.answer(f"Ваша группа: {result}")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await User_FSM.user_message_group.set()
 
 async def user_message_group(message: types.Message, state= User_FSM.user_message_group):
@@ -315,7 +412,11 @@ async def user_phone(message: types.Message, state= User_FSM.edit_user_info):
 	async with state.proxy() as data:
 		data["user_phone"] = message.text
 	result = a.select_info_users('users', 'phone_number', message.from_user.id)
+<<<<<<< HEAD
 	await message.answer(f"Ваш номер телефона: {result}\nИзмените")
+=======
+	await message.answer(f"Ваш номер телефона: {result}")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await User_FSM.user_message_phone.set()
 
 async def user_message_phone(message: types.Message, state= User_FSM.user_message_phone):
@@ -333,7 +434,11 @@ async def user_date_update(message: types.Message, state= User_FSM.edit_user_inf
 	async with state.proxy() as data:
 		data["user_date_update"] = message.text
 	result = a.select_info_users('users', 'date_birth', message.from_user.id)
+<<<<<<< HEAD
 	await message.answer(f"Ваша дата: {result}\nИзмените")
+=======
+	await message.answer(f"Ваша дата: {result}")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await User_FSM.user_message_date.set()
 
 async def user_message_date(message: types.Message, state= User_FSM.user_message_date):
@@ -351,13 +456,21 @@ async def user_num_pass(message: types.Message, state= User_FSM.edit_user_info):
 	async with state.proxy() as data:
 		data["user_num_pass"] = message.text
 	result = a.select_passport_by_telegram_id(message.from_user.id, 'number')
+<<<<<<< HEAD
 	await message.answer(f"Ваш серию паспорта: {result}\nИзмените")
+=======
+	await message.answer(f"Ваш номер паспорта: {result}")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await User_FSM.user_message_num_pass.set()
 
 async def user_message_num_pass(message: types.Message, state= User_FSM.user_message_num_pass):
 	async with state.proxy() as data:
 		data["user_message_num_pass"] = message.text
+<<<<<<< HEAD
 	answer = re.fullmatch(r'\d{4}', message.text)  # группа
+=======
+	answer = re.fullmatch(r'\d{6}', message.text)  # группа
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	if answer:
 		a.update_passport_issued_date_by_telegram_id(message.from_user.id, 'number', data["user_message_num_pass"])
 		await message.answer("✅Вы успешно изменили данные✅\nВыберите другие параметры или вернитесь в главное меню", reply_markup=KB.about_user_buttons)
@@ -369,13 +482,21 @@ async def user_serial_pas(message: types.Message, state= User_FSM.edit_user_info
 	async with state.proxy() as data:
 		data["user_serial_pas"] = message.text
 	result = a.select_passport_by_telegram_id(message.from_user.id, 'serial')
+<<<<<<< HEAD
 	await message.answer(f"Ваш номер паспорта: {result}\nИзмените")
+=======
+	await message.answer(f"Ваш серию паспорта: {result}")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await User_FSM.user_message_serial_pass.set()
 
 async def user_message_serial_pass(message: types.Message, state= User_FSM.user_message_serial_pass):
 	async with state.proxy() as data:
 		data["user_message_serial_pass"] = message.text
+<<<<<<< HEAD
 	answer = re.fullmatch(r'\d{6}', message.text)  # группа
+=======
+	answer = re.fullmatch(r'\d{4}', message.text)  # группа
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	if answer:
 		a.update_passport_issued_date_by_telegram_id(message.from_user.id, 'serial', data["user_message_serial_pass"])
 		await message.answer("✅Вы успешно изменили данные✅\nВыберите другие параметры или вернитесь в главное меню", reply_markup=KB.about_user_buttons)
@@ -387,7 +508,11 @@ async def user_issued_wthen(message: types.Message, state= User_FSM.edit_user_in
 	async with state.proxy() as data:
 		data["user_issued_wthen"] = message.text
 	result = a.select_passport_by_telegram_id(message.from_user.id, 'issued_date')
+<<<<<<< HEAD
 	await message.answer(f"паспорт выдан : {result}\nИзмените")
+=======
+	await message.answer(f"паспорт выдан : {result}")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await User_FSM.user_message_issued_wthen.set()
 
 async def user_message_issued_wthen(message: types.Message, state= User_FSM.user_message_issued_wthen):
@@ -405,7 +530,11 @@ async def user_issued_by(message: types.Message, state= User_FSM.edit_user_info)
 	async with state.proxy() as data:
 		data["user_issued_by"] = message.text
 	result = a.select_passport_by_telegram_id(message.from_user.id, 'issued_by')
+<<<<<<< HEAD
 	await message.answer(f"паспорт выдан: {result}\nИзмените")
+=======
+	await message.answer(f"паспорт выдан: {result}")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await User_FSM.user_message_issued_by.set()
 
 async def user_message_issued_by(message: types.Message, state= User_FSM.user_message_issued_by):
@@ -419,7 +548,11 @@ async def user_code(message: types.Message, state= User_FSM.edit_user_info):
 	async with state.proxy() as data:
 		data["user_code"] = message.text
 	result = a.select_passport_by_telegram_id(message.from_user.id, 'division_code')
+<<<<<<< HEAD
 	await message.answer(f"Код регистрации: {result}\nИзмените")
+=======
+	await message.answer(f"Код регистрации: {result}")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await User_FSM.user_message_code.set()
 
 async def user_message_code(message: types.Message, state= User_FSM.user_message_code):
@@ -437,7 +570,11 @@ async def user_reg(message: types.Message, state= User_FSM.edit_user_info):
 	async with state.proxy() as data:
 		data["user_reg"] = message.text
 	result = a.select_passport_by_telegram_id(message.from_user.id, 'residence')
+<<<<<<< HEAD
 	await message.answer(f"Место регистрации: {result}\nИзмените")
+=======
+	await message.answer(f"Место регистрации: {result}")
+>>>>>>> d1e4d78f11005b874321d6c9f8c1f206c8ba8339
 	await User_FSM.user_message_reg.set()
 
 async def user_message_reg(message: types.Message, state= User_FSM.user_message_reg):
