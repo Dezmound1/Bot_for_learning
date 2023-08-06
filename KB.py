@@ -7,8 +7,7 @@ Menu = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
 )
 Option = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
         inline_keyboard=[
-                [InlineKeyboardButton(text="Авторизоваться",callback_data='verification')],
-                [InlineKeyboardButton(text="Назад",callback_data='back')]
+                [InlineKeyboardButton(text="Авторизоваться",callback_data='verification')]
         ]
 )
 Сourse = InlineKeyboardMarkup(row_width=1, resize_keyboard=True,
@@ -59,8 +58,8 @@ about_user_buttons = ReplyKeyboardMarkup(row_width=3, resize_keyboard=True, keyb
                 [KeyboardButton(text= "Группа")],
                 [KeyboardButton(text= "Номер телефона")],
                 [KeyboardButton(text= "Дата рождения")],
-                [KeyboardButton(text= "Номер паспорта")],
                 [KeyboardButton(text= "Серия паспорта")],
+                [KeyboardButton(text= "Номер паспорта")],
                 [KeyboardButton(text= "Дата выдачи")],
                 [KeyboardButton(text= "Кем выдан")],
                 [KeyboardButton(text= "Код подразделения")],

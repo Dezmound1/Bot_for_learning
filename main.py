@@ -26,7 +26,7 @@ async def auntification(callback: types.CallbackQuery):
 		await User_FSM.main_buttons.set()
 	else:
 		await callback.message.edit_text("Вы не регистрировались? Исправьте эту ошибку!")
-		await callback.message.answer("Укажите свое ФИО.")
+		await callback.message.answer("Укажите свое ФИО. Пример Сергей Сергеев Сергеевич")
 		await User_FSM.registration.set()
 
 @dp.message_handler(commands=['admin'], state= '*')
@@ -36,7 +36,8 @@ async def check_admin_bd(message: types.Message):
 		await message.answer("приветствую вас!\nВыберите шаг!", reply_markup=KB.Option)
 		await Admin_FSM.catching_text.set()
 	else:
-		await message.answer("Прошу зарегестрироваться как студент!", reply_markup= KB.Menu)
+		await message.answer("Вы не являетесь админом, приветствую, Вас, студент!", reply_markup= KB.stud_button)
+		await User_FSM.main_buttons.set()
 
 if __name__ == "__main__":
 	executor.start_polling(dp, on_startup=on_startup, skip_updates=True)

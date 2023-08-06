@@ -38,6 +38,11 @@ class Database:
 		except Exception as e:
 			self.write_log(str(e), "db")
 
+	def update_subject_by_status(self, colum:str, status:bool, subject_id:int):
+		with self.connection:
+			self.cursor.execute(f"""update subject set {colum} = {status} where id = {subject_id}""")
+			self.connection.commit()
+
 	def get_subjects_by_status(self, status:bool)->dict:
 		with self.connection:
 			self.cursor.execute("select id, title from subject where status = %s", (status,))
@@ -73,30 +78,14 @@ class Database:
 		try:
 			with self.connection:
 				self.cursor.execute(f"""SELECT {colum} FROM {table_name} WHERE id = {subject_id}""")
-				return self.cursor.fetchone()
-		except Exception as e:
-			self.write_log(str(e), "db")
-
-	def select_info_admin(self, colum:str, table_name:str, subject_id:int): #метод проверки существования пользователя в таблице admin
-		try:
-			with self.connection:
-				self.cursor.execute(f"""SELECT {colum} FROM {table_name} WHERE telegram_admin_id = {subject_id}""")
-				return self.cursor.fetchone()
+				return self.cursor.fetchone()[0]
 		except Exception as e:
 			self.write_log(str(e), "db")
 
 	def update_info(self, colum:str, message:str, id_subject:int)->None: #апдейт для аблицы subject
 		try:
 			with self.connection:
-				self.cursor.execute(f"""UPDATE subject SET {colum} = "{message}" WHERE id = {id_subject} """)
-				self.connection.commit()
-		except Exception as e:
-			self.write_log(str(e), "db")
-
-	def update_info_status(self, colum:str, message:bool, id_subject:int)->None: #апдейт для аблицы subject
-		try:
-			with self.connection:
-				self.cursor.execute(f"""UPDATE subject SET {colum} = {message} WHERE id = {id_subject} """)
+				self.cursor.execute(f"""UPDATE subject SET {colum} = '{message}' WHERE id = {id_subject} """)
 				self.connection.commit()
 		except Exception as e:
 			self.write_log(str(e), "db")
@@ -174,6 +163,7 @@ class Database:
 					values (%s, %s, %s, %s, %s)
 					returning id;
 				""", (telegram_id, full_name, group_name, phone_number, date_birth))
+				self.connection.commit()
 				user_id = self.cursor.fetchone()[0]
 				return user_id
 		except Exception as e:
@@ -187,6 +177,7 @@ class Database:
 						passport (user_id, issued_date, issued_by, division_code, residence, number, serial)
 					values (%s, %s, %s, %s, %s, %s, %s)
 				""", (user_id, issued_date, issued_by, division_code, residence, number, serial))
+				self.connection.commit()
 		except Exception as e:
 			self.write_log(str(e), "db")
 
@@ -280,6 +271,25 @@ class Database:
 	                SET {colum} = '{issued_date}'
 	                WHERE user_id = {user_id}
 	            """)
+		except Exception as e:
+			self.write_log(str(e), "db")
+
+	def update_subject_data_by_telegram_id(self, telegram_id: int, colum, data: str):
+		try:
+			with self.connection:
+				self.cursor.execute(f"""
+					select id from users where telegram_id = {telegram_id}
+					
+				""")
+				user_id = self.cursor.fetchone()
+				if user_id is None:
+					return
+				user_id = user_id[0]
+				self.cursor.execute(f"""
+					update subject
+					set {colum} = '{data}'
+					where user_id = {user_id}
+				""")
 		except Exception as e:
 			self.write_log(str(e), "db")
 

@@ -6,7 +6,7 @@ from aiogram.utils.callback_data import *
 from Module import dp, KB
 import custom_moduls.admin.list_of_colums
 import re
-
+from custom_moduls.user.User_line import User_FSM
 a = Database("Dolg_bot_bd")
 
 
@@ -72,18 +72,16 @@ async def cours_type(callback: types.CallbackQuery, state=Admin_FSM.course):
 async def options(callback: types.CallbackQuery, state=Admin_FSM.change_option):
 	async with state.proxy() as data:
 		data['callback'] = callback.data
-	await callback.message.edit_text(text="Выбирите данные для изменения!",
-	                                 reply_markup=custom_moduls.admin.list_of_colums.changing)
+	await callback.message.edit_text(text="Выбирите данные для изменения!", reply_markup=custom_moduls.admin.list_of_colums.changing)
 	await Admin_FSM.type_set.set()
 
 
 # Изменение Стоимости
 async def cost_set(callback: types.CallbackQuery, state=Admin_FSM.type_set):
 	async with state.proxy() as data:
-		data["data_option"] = callback.data
-		print(data["data_option"])
-	result = a.select_info_subject(data["data_option"], "subject", data['callback'])
-	await callback.message.answer(text=f"Введи новую стоимость!\nСтоимость курса сейчас {result[0]} рублей!")
+		data['data_option'] = callback.data
+	result = a.select_info_subject(data['data_option'], "subject", data['callback'])
+	await callback.message.answer(text=f"Введи новую стоимость!\nСтоимость курса сейчас {result} рублей!")
 	await Admin_FSM.cost_it.set()
 
 
@@ -92,10 +90,9 @@ async def cost_it(message: types.Message, state=Admin_FSM.cost_it):
 		data["text"] = message.text
 	if re.fullmatch(r'\d{4,}', message.text):  # цена не может быть меньше 4-х значного числа КАК ПРАВИЛО!
 		a.update_info(data['data_option'], message.text, data['callback'])
-		result = a.select_info_subject(data["data_option"], "subject", data['callback'])
-		await message.answer(f"Ты изменил кост!, Теперь его стоимость {result[0]} рублей!")
-		await message.answer(text="Выбери данные для изменения!",
-		                     reply_markup=custom_moduls.admin.list_of_colums.changing)
+		result = a.select_info_subject(data['data_option'], "subject", data['callback'])
+		await message.answer(f"Ты изменил кост!, Теперь его стоимость {result} рублей!")
+		await message.answer(text="Выбери данные для изменения!", reply_markup=custom_moduls.admin.list_of_colums.changing)
 		await Admin_FSM.type_set.set()
 	else:
 		await message.answer("Введи правильную стоимость!")
@@ -104,19 +101,23 @@ async def cost_it(message: types.Message, state=Admin_FSM.cost_it):
 # Изменение даты
 async def schedule_set(callback: types.CallbackQuery, state=Admin_FSM.type_set):
 	async with state.proxy() as data:
-		data["data_option"] = callback.data
-	result = a.select_info_subject(data["data_option"], "subject", data['callback'])
-	await callback.message.answer(f"Введи новую дату!\nДата курса сейчас {result[0]}!")
+		data['data_option'] = callback.data
+	result = a.select_info_subject(data['data_option'], "subject", data['callback'])
+	await callback.message.answer(f"Введи новую дату!\nДата курса сейчас {result}!")
 	await Admin_FSM.schedule_it.set()
 
 
 async def schedule_it(message: types.Message, state=Admin_FSM.schedule_it):
 	async with state.proxy() as data:
-		data["text"] = message.text
+		data['text'] = message.text
 	if re.fullmatch(r'(([0-2][1-9])|3+[0-1])+[.]+((0+[1-9])|[10-12])+[.]+(202+[3-8])', message.text):
-		a.update_info(data['data_option'], str(message.text), data['callback'])
-		result = a.select_info_subject(data["data_option"], "subject", data['callback'])
-		await message.answer(f"Ты изменил дату! Курс будет проводиться {result[0]} числа!")
+		def formated_date(date):
+			day, month, year = date.split(".")
+			formatted_date = f"{year}.{month.zfill(2)}.{day.zfill(2)}"
+			return formatted_date
+		a.update_info(data['data_option'], formated_date(message.text), data['callback'])
+		result = a.select_info_subject(data['data_option'], "subject", data['callback'])
+		await message.answer(f"Ты изменил дату! Курс будет проводиться {result} числа!")
 		await message.answer("Выбери данные для изменения!", reply_markup=custom_moduls.admin.list_of_colums.changing)
 		await Admin_FSM.type_set.set()
 	else:
@@ -126,19 +127,19 @@ async def schedule_it(message: types.Message, state=Admin_FSM.schedule_it):
 # Изменение аудитории
 async def room_set(callback: types.CallbackQuery, state=Admin_FSM.type_set):
 	async with state.proxy() as data:
-		data["data_option"] = callback.data
-	result = a.select_info_subject(data["data_option"], "subject", data['callback'])
-	await callback.message.answer(f"Введи новую аудиторию!\nАудитория курса сейчас {result[0]}!")
+		data['data_option'] = callback.data
+	result = a.select_info_subject(data['data_option'], "subject", data['callback'])
+	await callback.message.answer(f"Введи новую аудиторию!\nАудитория курса сейчас {result}!")
 	await Admin_FSM.room_it.set()
 
 
 async def room_it(message: types.Message, state=Admin_FSM.room_it):
 	async with state.proxy() as data:
-		data["text"] = message.text
+		data['text'] = message.text
 	if re.fullmatch(r'\d{4}', message.text):
 		a.update_info(data['data_option'], message.text, data['callback'])
-		result = a.select_info_subject(data["data_option"], "subject", data['callback'])
-		await message.answer(f"Ты изменил номер аудитории! Курс будет проходить в аудитории № {result[0]}!")
+		result = a.select_info_subject(data['data_option'], "subject", data['callback'])
+		await message.answer(f"Ты изменил номер аудитории! Курс будет проходить в аудитории № {result}!")
 		await message.answer("Выбери данные для изменения!", reply_markup=custom_moduls.admin.list_of_colums.changing)
 		await Admin_FSM.type_set.set()
 	else:
@@ -148,9 +149,9 @@ async def room_it(message: types.Message, state=Admin_FSM.room_it):
 # Изменение преподавателя
 async def teacher_set(callback: types.CallbackQuery, state=Admin_FSM.type_set):
 	async with state.proxy() as data:
-		data["data_option"] = callback.data
-	result = a.select_info_subject(data["data_option"], "subject", data['callback'])
-	await callback.message.answer(f"Введи ФИО преподавателя!\nПреподаватель курса сейчас {result[0]}!")
+		data['data_option'] = callback.data
+	result = a.select_info_subject(data['data_option'], "subject", data['callback'])
+	await callback.message.answer(f"Введи ФИО преподавателя!\nПреподаватель курса сейчас {result}!")
 	await Admin_FSM.teacher_it.set()
 
 
@@ -159,8 +160,8 @@ async def teacher_it(message: types.Message, state=Admin_FSM.teacher_it):
 		data["text"] = message.text
 	if re.fullmatch(r'(\w{2,})+[ ]+(\w{2,})+[ ]+(\w{2,})', message.text):
 		a.update_info(data['data_option'], message.text, data['callback'])
-		result = a.select_info_subject(data["data_option"], "subject", data['callback'])
-		await message.answer(f"Ты изменил ФИО преподавателя! Курс будет проводить: {result[0]}!")
+		result = a.select_info_subject(data['data_option'], "subject", data['callback'])
+		await message.answer(f"Ты изменил ФИО преподавателя! Курс будет проводить: {result}!")
 		await message.answer("Выбери данные для изменения!", reply_markup=custom_moduls.admin.list_of_colums.changing)
 		await Admin_FSM.type_set.set()
 	else:
@@ -170,9 +171,9 @@ async def teacher_it(message: types.Message, state=Admin_FSM.teacher_it):
 # Изменение комментария
 async def comment_set(callback: types.CallbackQuery, state=Admin_FSM.type_set):
 	async with state.proxy() as data:
-		data["data_option"] = callback.data
-	result = a.select_info_subject(data["data_option"], "subject", data['callback'])
-	await callback.message.answer(f"Введи комметарий!\nКомментарий для курса сейчас: {result[0]}!")
+		data['data_option'] = callback.data
+	result = a.select_info_subject(data['data_option'], "subject", data['callback'])
+	await callback.message.answer(f"Введи комметарий!\nКомментарий для курса сейчас: {result}!")
 	await Admin_FSM.comment_it.set()
 
 
@@ -180,8 +181,8 @@ async def comment_it(message: types.Message, state=Admin_FSM.comment_it):
 	async with state.proxy() as data:
 		data["text"] = message.text
 	a.update_info(data['data_option'], message.text, data['callback'])
-	result = a.select_info_subject(data["data_option"], "subject", data['callback'])
-	await message.answer(f"Ты изменил комментарий!\n{result[0]}")
+	result = a.select_info_subject(data['data_option'], "subject", data['callback'])
+	await message.answer(f"Ты изменил комментарий!\n{result}")
 	await message.answer("Выбери данные для изменения!", reply_markup=custom_moduls.admin.list_of_colums.changing)
 	await Admin_FSM.type_set.set()
 
@@ -191,11 +192,11 @@ async def set_list(callback: types.CallbackQuery, state=Admin_FSM.set_subjects):
 	async with state.proxy() as data:
 		data['set_List'] = callback.data
 	if data['set_List'] == 'open_butt':
-		await callback.message.edit_text(f"Выберите предмет из списка <b>включенных</b>", reply_markup=a.gen_off_on_subject_but()["on"])
+		await callback.message.answer(f"Выберите предмет из списка <b>включенных</b>", reply_markup=a.gen_off_on_subject_but()["on"])
 		await Admin_FSM.set_status_on.set()
 		await callback.message.answer("Вернуться к выбору опции 👉🏻/back👈🏻")
 	else:
-		await callback.message.edit_text("Выберите предмет из списка <b>включенных</b>", reply_markup=a.gen_off_on_subject_but()["off"])
+		await callback.message.answer("Выберите предмет из списка <b>включенных</b>", reply_markup=a.gen_off_on_subject_but()["off"])
 		await Admin_FSM.set_status_off.set()
 		await callback.message.answer("Вернуться к выбору опции 👉🏻/back👈🏻")
 
@@ -203,7 +204,7 @@ async def set_list(callback: types.CallbackQuery, state=Admin_FSM.set_subjects):
 async def set_status_on(callback: types.CallbackQuery, state=Admin_FSM.set_status_on):
 	async with state.proxy() as data:
 		data['subject_status'] = callback.data
-	await callback.message.edit_text("Вы точно хотите включить\выключить курс?", reply_markup=KB.yes_no)
+	await callback.message.answer("Вы точно хотите включить\выключить курс?", reply_markup=KB.yes_no)
 	await Admin_FSM.set_answer_on.set()
 
 
@@ -211,17 +212,17 @@ async def set_answer_on(callbck: types.CallbackQuery, state=Admin_FSM.set_answer
 	async with state.proxy() as data:
 		data['answer'] = callbck.data
 	if data['answer'] == 'ans_yes':
-		a.update_info_status('status', True, data['subject_status'])
+		a.update_subject_by_status('status', True, data['subject_status'])
 		result = a.select_info_subject('status', 'subject', data['subject_status'])
-		await callbck.message.edit_text(
+		await callbck.message.answer(
 			f"Вы успешно изменили статус!\n Теперь статус предмета {data['subject_status']}: {result[0]}",
 			reply_markup=a.gen_off_on_subject_but()["on"])
 		await Admin_FSM.set_status_on.set()
 		await callbck.message.answer("Вернуться к выбору опции 👉🏻/back👈🏻")
 	else:
-		a.update_info_status('status', False, data['subject_status'])
+		a.update_subject_by_status('status', False, data['subject_status'])
 		result = a.select_info_subject('status', 'subject', data['subject_status'])
-		await callbck.message.edit_text(
+		await callbck.message.answer(
 			f"Вы успешно изменили статус!\n Теперь статус предмета {data['subject_status']}: {result[0]}",
 			reply_markup=a.gen_off_on_subject_but()["on"])
 		await Admin_FSM.set_status_on.set()
@@ -231,7 +232,7 @@ async def set_answer_on(callbck: types.CallbackQuery, state=Admin_FSM.set_answer
 async def set_status_off(callback: types.CallbackQuery, state=Admin_FSM.set_status_off):
 	async with state.proxy() as data:
 		data['subject_status'] = callback.data
-	await callback.message.edit_text("Вы точно хотите включить\выключить курс?", reply_markup=KB.yes_no)
+	await callback.message.answer("Вы точно хотите включить\выключить курс?", reply_markup=KB.yes_no)
 	await Admin_FSM.set_answer_off.set()
 
 
@@ -239,17 +240,28 @@ async def set_answer_off(callbck: types.CallbackQuery, state=Admin_FSM.set_answe
 	async with state.proxy() as data:
 		data['answer'] = callbck.data
 	if data['answer'] == 'ans_yes':
-		a.update_info_status('status', True, data['subject_status'])
+		a.update_subject_by_status('status', True, data['subject_status'])
 		result = a.select_info_subject('status', 'subject', data['subject_status'])
-		await callbck.message.edit_text(f"Вы успешно изменили статус!\n Теперь статус предмета {data['subject_status']}: {result[0]}",reply_markup=a.gen_off_on_subject_but()["off"])
+		await callbck.message.answer(f"Вы успешно изменили статус!\n Теперь статус предмета {data['subject_status']}: {result[0]}",reply_markup=a.gen_off_on_subject_but()["off"])
 		await Admin_FSM.set_status_off.set()
 		await callbck.message.answer("Вернуться к выбору опции 👉🏻/back👈🏻")
 	else:
-		a.update_info_status('status', False, data['subject_status'])
+		a.update_subject_by_status('status', False, data['subject_status'])
 		result = a.select_info_subject('status', 'subject', data['subject_status'])
-		await callbck.message.edit_text(f"Вы успешно изменили статус!\n Теперь статус предмета {data['subject_status']}: {result[0]}",reply_markup=a.gen_off_on_subject_but()["off"])
+		await callbck.message.answer(f"Вы успешно изменили статус!\n Теперь статус предмета {data['subject_status']}: {result[0]}",reply_markup=a.gen_off_on_subject_but()["off"])
 		await Admin_FSM.set_status_off.set()
 		await callbck.message.answer("Вернуться к выбору опции 👉🏻/back👈🏻")
+
+#возвращение домой
+async def reg_as_stud(callback: types.CallbackQuery, state= Admin_FSM.cheking_data):
+	result = a.join_select_info_users(callback.from_user.id)
+	if result:
+		await callback.message.answer("Приветствую вас вновь!", reply_markup=KB.stud_button)
+		await User_FSM.main_buttons.set()
+	else:
+		await callback.message.edit_text("Вы не регистрировались? Исправьте эту ошибку!")
+		await callback.message.answer("Укажите свое ФИО. Пример Сергей Сергеев Сергеевич")
+		await User_FSM.registration.set()
 
 
 def admin_hendlers():
@@ -277,3 +289,4 @@ def admin_hendlers():
 	dp.register_callback_query_handler(set_status_off, state=Admin_FSM.set_status_off)
 	dp.register_callback_query_handler(set_answer_on, state=Admin_FSM.set_answer_on)
 	dp.register_callback_query_handler(set_answer_off, state=Admin_FSM.set_answer_off)
+	dp.register_callback_query_handler(reg_as_stud, text= 'stud', state=Admin_FSM.cheking_data)

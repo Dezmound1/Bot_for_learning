@@ -5,5 +5,5 @@ from aiogram import types
 import KB
 
 storage= MemoryStorage()
-bot = Bot(token= "6106250764:AAHV-jZy1rkHGDK2OCfCHxQ9Sq42i7wSIDU", parse_mode= types.ParseMode.HTML)
+bot = Bot(token= "6544689005:AAE4moL83cHveFgI-DVZfll-_thcXMOmaRs", parse_mode= types.ParseMode.HTML)
 dp = Dispatcher(bot, storage= storage)
